@@ -1,0 +1,29 @@
+<form>
+    <div><input id="AlarmPassword" type="password"></div>
+    <div><input type="submit" value="OK"><input type="reset" value="Abbrechen"></div>
+    <table class="tabelleTastaturAlarm">
+        <thead>
+                <tr><th id="TitelTastaturAlarm" colspan="3"></th></tr>           
+        </thead>
+        <tbody>
+        <tr><th><input type="button" value="7"></th><th><input type="button" value="8"></th><th><input type="button" value="9"></th></tr>
+        <tr><th><input type="button" value="4"></th><th><input type="button" value="5"></th><th><input type="button" value="6"></th></tr>
+        <tr><th><input type="button" value="1"></th><th><input type="button" value="2"></th><th><input type="button" value="3"></th></tr>
+        <tr><th><input type="button" value="0"></th><th><input type="button" value="abbr"></th><th><input type="button" value="OK"></th></tr>
+        </tbody>
+    </table>
+</form>
+
+.tabelleTastaturAlarm
+{
+    border-spacing:10px;
+    width:100%;
+    table-layout: fixed;
+}
+.tabelleTastaturAlarm input
+{
+    width:100%;
+    background:rgb(34, 44, 178);
+}
+
+
