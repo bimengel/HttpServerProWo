@@ -1,0 +1,350 @@
+img.a {
+vertical-align: middle;
+}
+
+.table_border {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+.border_top
+{
+  border-top:1px solid black;
+}
+
+.nav {
+    border:3px solid #aaa; 
+    box-shadow:5px 5px 5px #444
+}
+
+#canvasSensor,
+#canvasHeizung
+{
+	border: 1px dotted #3983ab;    
+}
+
+body{ 
+    margin: 0; 
+    padding: 0;
+}
+
+/* damit die buttons im Zentrum der Gridfelder sind     */
+.center {
+    text-align: center;
+}
+
+.btn_heizung_1,
+.alarm_1
+{
+    background: rgb(221, 217, 217);
+    box-sizing: border-box;
+    border:1px solid #aaa; 
+    margin: 5px 3px 3px 3px;   
+    padding-left: 20px;
+ }
+
+.prowo_btn,     /* nur für die Anzeige                                  */
+.btn_steuerung_2,    /* nur für Ebene 2 z.B Wohnzimmer                       */
+.btn_heizung_2,
+.btn_alarm_1,
+.btn_alarm_3,
+.btn_alarm_history,
+.btn_alarmclock
+{
+    display:block;
+    background: white;
+    box-sizing: border-box;
+    border:1px solid #aaa; 
+    margin: 5px 3px 3px 3px;   
+    height: 60px;
+    padding:10px;
+}
+.btn_sensor
+{
+    background: white;
+    box-sizing: border-box;
+    border:1px solid #aaa; 
+    margin: 5px 3px 3px 3px;   
+    padding:10px;
+    min-height:50px;    
+}
+.prowo_home_uhr
+{
+    background: white;
+    box-sizing: border-box;
+    border:1px solid #aaa; 
+    margin: 5px 3px 3px 3px;   
+    padding:5px;
+    text-align:center;
+}
+.prowo_home_heizung,
+.prowo_home_alarm,
+.prowo_home_gsm,
+.prowo_home_history,
+.prowo_home_ws
+{
+    background: white;
+    box-sizing: border-box;
+    border:1px solid #aaa; 
+    margin: 5px 3px 3px 3px;   
+    padding:10px;
+    text-align:center;
+}
+.prowo_home_uhr_table,
+.prowo_home_table
+{
+    width:100%;
+}
+.prowo_home_message_column1
+{
+    color:#E65858;
+    border-bottom:1px solid #aaa; 
+    width:100%;
+}
+.prowo_home_message_table
+{
+    background: white;
+    border:1px solid #aaa; 
+    margin: 5px 3px 3px 3px;       
+    text-align:left;
+    border-collapse: collapse;
+}
+.prowo_home_message_table th
+{
+    border-bottom:1px solid #aaa; 
+    padding:10px;    
+}
+.prowo_home_uhr_table
+{
+    width:100%;
+}
+#historyTageMinus
+{
+    float: right;  
+}
+#historyAnzTage
+{
+    text-align: center;
+}
+.dialogSPHeizProgramm,
+.heizung_3
+{
+    width: 98%;
+    background: rgb(221, 217, 217);
+    box-sizing: border-box;
+    border:1px solid #aaa; 
+    padding: 5px;
+    margin: 5px 3px 3px 3px;  
+}
+
+.table_heizprogramm_wochentage
+{
+    width : 100%;
+}
+
+.btn_heizung_text_Heizprogramm
+{
+    box-sizing: border-box;
+    margin: 10px 3px 3px 10px;  
+}
+
+.heizung_4
+{
+    overflow:hidden;
+    background: white;
+    box-sizing: border-box;
+    border:1px solid #aaa; 
+    margin: 3px 3px 3px 3px;   
+    padding:5px;
+    width:100%;
+}
+.dialogSPHeizProgrammTag {
+    overflow:hidden;
+    background: white;
+    box-sizing: border-box;
+    border:1px solid #aaa; 
+    margin: 3px 3px 3px 30px;   
+    padding:5px;
+}
+.btn_zaehler_1
+{
+    background: white;
+    box-sizing: border-box;
+    border:1px solid #aaa; 
+    margin: 5px 3px 3px 3px;  
+    padding:5px 10px 5px 10px;
+}
+.zaehler_table_col11
+{
+    font-weight:bold;
+    width:50%;
+}
+.zaehler_table_col12
+{
+    text-align: right;
+}
+.zaehler_table_col2
+{
+    text-align: right;
+    width:40%;
+}
+.zaehler_table_col3
+{
+    text-align:center;
+    width:10%;
+}
+#dialogEinstellungZaehler,
+#dialogAlarmTastatur,
+#dialogHistory_Ein,
+#dialogHistory_Aus
+{
+    margin:20px;
+    padding: 20px;
+}
+#contentZaehler {
+    padding: 10px;   
+}
+#canvasZaehler {
+    border:1px solid #E65858;
+    border-radius:4px;
+}
+
+.btn_signminus
+{
+    visibility: hidden;
+}
+.wochentag_tabelle
+{
+    text-align:center;
+    font-size: 12px;
+    float: right; 
+}
+.wochentag_tabelle_alarmclock
+{
+    text-align:center;
+    font-size: 12px;
+    padding: 0px 0px 20px 0px;
+}
+.prowo_btn_img_pos {
+    height: 30px;
+    width: 30px; 
+    float: left;
+}
+.prowo_btn_text,
+.sensor_text {
+    padding: 5px 1px 10px 15px;
+    float: left;
+}
+.alarmclock_name
+{
+    padding: 1px 1px 1px 75px;
+    font-size: 16px;
+}
+.alarmclock_uhr
+{   
+    float:left;
+    font-size: 24px;
+    font-weight:bold;
+}
+.alarmaktiv_uhr
+{   
+    text-align: center;
+    font-size: 64px;
+    font-weight:bold;
+    height: 40px;
+}
+.alarmaktiv_wecker
+{
+    text-align: center;
+    font-size: 32px;
+    font-weight:bold;
+}
+.alarmaktiv_button
+{
+    text-align: center;
+    font-size: 48px;
+    font-weight:bold;
+    height: 75px;    
+}
+
+.alarmclock_1
+{
+    background: rgb(221, 217, 217);
+    box-sizing: border-box;
+    border:1px solid #aaa; 
+    margin: 5px 3px 3px 3px;   
+    height: 40px;
+    padding: 4px 20px 0px 20px;
+}
+.alarmclock_signplus {
+    float: right;  
+}
+
+.alarmclock_title
+{
+    font-size: 18px;
+    font-weight:bold;   
+}
+.alarmclock_snooze
+{
+    padding: 10px 0px 20px 0px;
+}
+.alarmclock_repeat
+{
+    padding: 0px 1px 1px 75px;
+}
+.sensor_temp,
+.sensor_humidity {
+    padding: 5px 1px 10px 15px;
+    float: right;
+}
+.prowo_btn_text2 {
+    padding: 5px 1px 10px 15px;
+    float: right;
+}
+
+.prowo_btn_text_datum_uhrzeit {
+    padding: 5px 1px 10px 15px;
+    float: right;
+}
+
+.prowo_btn_schalten {
+    overflow: hidden;
+    position : relative;
+    right : 10px;
+    height: 30px;
+    width: 30px; 
+    float: right;
+}
+
+.prowo_btn_rahmen {
+    position: absolute;
+    top: 0px;
+    left: 0px;  
+}
+.prowo_btn_ein {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.prowo_btn_aus {
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+.backgrounderror{
+   background:#ff000085;
+
+}
+.backgroundok
+{
+    background:#00ff1485
+}
+.backgroundwarning
+{
+    background:#ffff00b1
+}
+.backgrounddisabled
+{
+    background:grey
+}

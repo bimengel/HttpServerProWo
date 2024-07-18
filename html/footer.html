@@ -1,0 +1,233 @@
+<div data-role="footer" align="middle" data-position="fixed" data-tap-toggle="false">(c) Josef Engel 2024</div>
+
+<div data-role="popup" data-position-to="window" class="ui-corner-all ui-shadow" 
+            data-transition="pop" style="max-width:300px;" id="dialogalarmclock" data-dismissible="false">
+    <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+        <select id="dialogalarmclock_selectbox">
+        </select>
+        <input data-role="time" type="time" id="tpalarmclock"/>      
+        <div class="alarmclock_title">Bezeichnung</div>
+        <input type="text" id="inputalarmclockName"/>
+        <div class="alarmclock_title">Wiederholung
+        <div>
+            <table class="wochentag_tabelle_alarmclock">
+                <colgroup><col span="7" width="35px"</colgroup>
+                <tr>
+                    <td>Mo</td><td>Di</td><td>Mi</td><td>Do</td><td>Fr</td><td>Sa</td><td>So</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="chk_alarmclock1"></td>
+                    <td><input type="checkbox" id="chk_alarmclock2"></td>                
+                    <td><input type="checkbox" id="chk_alarmclock3"></td>                
+                    <td><input type="checkbox" id="chk_alarmclock4"></td>                
+                    <td><input type="checkbox" id="chk_alarmclock5"></td>                
+                    <td><input type="checkbox" id="chk_alarmclock6"></td> 
+                    <td><input type="checkbox" id="chk_alarmclock7"></td>
+                </tr>
+            </table>
+        </div></div>
+        <div class="alarmclock_title alarmclock_snooze">Schlummern
+            <div class="prowo_btn_schalten" id="btn_snooze" menu="" status="">
+                <img class="prowo_btn_ein" src="../images/prowo_btn_ein.png"/>
+                <img class="prowo_btn_aus" id="alarmclock_prowo_btn_aus"  src="../images/prowo_btn_aus.png"/>
+                <img class="prowo_btn_rahmen" src="../images/prowo_btn_rahmen.png"/>
+            </div>
+        </div>
+        <a data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="c" id="popupCancel">Abbrechen</a>
+        <a data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" id="popupOkalarmclock">Speichern</a>
+        <a data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" id="popupClearalarmclock">Löschen</a>        
+    </div>
+</div>
+
+<div data-role="popup" data-position-to="window" class="ui-corner-all ui-shadow" 
+            data-transition="pop" style="max-width:300px;" id="dialogSignMinus" data-dismissible="false">
+    <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+        <h3 class="ui-title">Eintrag löschen</h3>
+        <a data-role="button" data-inline="true" data-rel="back" data-theme="c" id="popupCancel">Nein</a>
+        <a data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" id="popupOk">Ja</a>
+    </div>
+</div>
+
+<div data-role="popup" data-position-to="window" class="ui-corner-all ui-shadow" 
+        data-transition="pop" style="max-width:300px;" id="dialogSignPlus" data-dismissible="false">
+    <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+        <div id="dialogSignPlusContent"></div>
+        <a data-role="button" data-inline="true" data-rel="back" data-theme="c" id="popupCancel">Abbrechen</a>        
+    </div>
+</div>
+
+<div data-role="popup" data-position-to="window" class="ui-corner-all ui-shadow" 
+            data-transition="pop" style="max-width:300px;" id="dialogInputText" data-dismissible="false">
+    <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+        <form>
+            <input type="text" id="dialogInputTextContent"/>
+            <a data-role="button" data-inline="true" data-rel="back" data-theme="c" id="popupCancel">Abbrechen</a>
+            <a data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" id="popupOkInputText">Speichern</a>        
+        </form>
+    </div>
+</div>
+
+<div data-role="popup" id="dialogDatumUhrzeit" data-position-to="window" class="ui-corner-all ui-shadow" 
+            data-transition="pop" style="max-width:300px;" data-dismissible="false">
+    <form>
+        <div><input data-role="date" type="date" id="datepicker"></div>
+        <div><input data-role="time" type="time" id="timepicker"></div>
+        <a data-role="button" data-inline="true" data-rel="back" data-theme="c" id="popupCancel">Abbrechen</a>
+        <a data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" id="submitHeizProgramm">Speichern</a>  
+    </form>
+</div>
+
+<div data-role="popup" id="dialogEinstellungZaehler" data-position-to="window" class="ui-corner-all ui-shadow" 
+            data-transition="pop" style="max-width:300px;" data-dismissible="false">
+    <form>
+        <div>Offset-Datum<input data-role="date" type="date" id="zaehlerOffsetDatum"><br></div>
+        <div>Offset<input type="number" id="zaehlerOffset"><br></div>
+        <a data-role="button" data-inline="true" data-rel="back" data-theme="c" id="popupCancel">Abbrechen</a>
+        <a data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" id="submitEinstellungZaehler">Speichern</a>  
+    </form>
+</div>
+
+<div data-role="popup" id="dialogAlarmTastatur" data-position-to="window" class="ui-corner-all ui-shadow" 
+        data-transition="pop" style="max-width:300px;" data-dismissible="false">
+    <form>
+        <div id="TitelTastaturAlarm"></div>
+        <input id="AlarmPassword" type="password">
+        <a data-role="button" data-inline="true" data-rel="back" data-theme="c" id="popupCancel">Abbrechen</a>
+        <a data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" id="submitAlarmPassword">Starten</a>  
+    </form>
+</div>
+
+<div data-role="popup" id="dialogHistory_Ein" data-position-to="window" class="ui-corner-all ui-shadow" 
+        data-transition="pop" style="max-width:300px;" data-dismissible="false">
+    <form>
+        <div>Lichtprogramm von vor </div>
+        <div class="ui-grid-b center">
+                <div class="ui-block-a">
+                    <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-minus" id="historyTageMinus"></button>            
+                </div>
+                <div class="ui-block-b">
+                    <input class="ui-input-text" type="number" id="historyAnzTage">
+                </div>
+                <div class="ui-block-c">
+                    <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-plus" id="historyTagePlus"></button>
+                </div>
+        </div>
+        <div class="center">Tagen abspielen</div>
+        <a data-role="button" data-inline="true" data-rel="back" data-theme="c" id="popupCancel">Abbrechen</a>
+        <a data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" id="submitHistoryTage">Starten</a>  
+    </form>
+</div>
+<div data-role="popup" id="dialogHistory_Aus" data-position-to="window" class="ui-corner-all ui-shadow" 
+    data-transition="pop" style="max-width:300px;" data-dismissible="false">
+    <form>
+        <div class="center">Lichtprogramm</div>
+        <a data-role="button" data-inline="true" data-rel="back" data-theme="c" id="popupCancel">Abbrechen</a>
+        <a data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" id="submitHistoryTage">Beenden</a>  
+    </form>
+</div>
+</div>
+<div data-role="page" id="zaehler" >
+    <div data-role="header" data-position="fixed" data-tap-toggle="false">
+    <div id="selectZaehler">
+        <select id="selectZaehlerNr"></select>
+        <select id="selectZaehlerPeriode"></select> 
+        <select id="selectZaehlerPeriodeNr"></select>
+    </div>   
+    <div class="ui-grid-b center">
+            <div class="ui-block-a">
+                <a class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline" id="vorigeElement">Button</a>
+            </div>
+            <div class="ui-block-b">
+                <a class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline" id="naechsteElement">Button</a>
+            </div>   
+    </div>
+    </div>
+    <div data-role="ui-content" id="contentZaehler" class"svgZaehler" data-position="fixed" data-tap-toggle="false">
+        <!-- width und hight beschränken die Grafik auf den angegebenen Raum, wenn nicht angegeben wird der maximale Raum eingenommen
+             Das viewbox Attribut schafft ein Fenster zur Grafik innerhalb der HTML-Seite und verkleinert, vergrössert, verzerrt, positionniert
+             und beschneidet das SVG-Objekt.
+        -->
+        <svg id="svgZaehler" viewBox="0 0 370 390" preserveAspectRatio="none">
+            <g id="svgZHLine" stroke="blue" stroke-width="10">
+                <path class="ZhLinie" id="Z1"></path>
+            </g>
+            <g id = "svgZVLine" stroke="blue" stroke-width="10">
+                <path class="ZvLinie" id="A1"></path>
+            </g>
+        </svg>
+    </div></div>
+<div data-role="page" id="uhrzeitTemperatur" >
+    <div data-role="header" data-position="fixed" data-tap-toggle="false">
+    <div>
+        <select id="selectHeizprogramm"></select>
+        <select id="selectHeizprogrammTag"></select> 
+        <select id="selectHeizkoerper"></select>
+    </div>   
+    <div class="ui-grid-c center">
+            <div class="ui-block-a">
+                <a class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline" id="vorigeLinie">Button</a>
+            </div>
+            <div class="ui-block-b">
+                <div class="ui-input-text ui-body-a ui-corner-all ui-shadow-inset" id="anzeige_uhrzeittemp"></div>
+            </div>
+             <div class="ui-block-c">
+                <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-refresh" id="refresh_uhrzeittemp"></button>
+                <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-plus" id="insert_uhrzeittemp"></button>
+            </div>
+            <div class="ui-block-d">
+                <a class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline" id="naechsteLinie">Button</a>
+            </div>   
+    </div>
+    </div>
+    <div data-role="ui-content" id="contentUhrzeitTemperatur" class"canvasHeizung" data-position="fixed" data-tap-toggle="false">
+        <!-- width und hight beschränken die Grafik auf den angegebenen Raum, wenn nicht angegeben wird der maximale Raum eingenommen
+             Das viewbox Attribut schafft ein Fenster zur Grafik innerhalb der HTML-Seite und verkleinert, vergrössert, verzerrt, positionniert
+             und beschneidet das SVG-Objekt.
+        -->
+        <canvas id="canvasHeizung">
+        </canvas></div>
+        <div data-role="footer" align="middle" data-position="fixed">
+            <fieldset class="ui-grid-a">
+            <div class="ui-block-a"><input type="button" value="Zurück" id="zurueck" data-theme="a"></div>
+            <div class="ui-block-b"><input type="button" id="submitUhrzeitTemp" value="Speichern" data-theme="b"></div>
+        </fieldset></div>
+    </div>
+    <div data-role="page" id="diagrammZaehler" >
+        <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <div>
+            <select id="selectZaehlerName"></select>
+            <select id="selectZaehlerJahr"></select> 
+            <select id="selectZaehlerMonat"></select>
+        </div>   
+        <div class="ui-grid-b center">
+                <div class="ui-block-a">
+                    <a class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline" id="vorigeZaehler"></a>
+                </div>
+                <div class="ui-block-b">
+                    <div class="ui-input-text ui-body-a ui-corner-all ui-shadow-inset" id="anzeige_zaehler"></div>
+                </div>
+                <div class="ui-block-c">
+                    <a class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-r ui-btn-icon-notext ui-btn-inline" id="naechsteZaehler"></a>
+                </div>   
+        </div></div>
+        <div data-role="ui-content" id="contentZaehler" class"canvaszaehler" data-position="fixed" data-tap-toggle="false">
+            <canvas id="canvasZaehler"></canvas>
+        </div>
+     <div data-role="footer" align="middle" data-position="fixed">
+     <fieldset class="ui-grid-a">
+        <div class="ui-block-a"><input type="button" value="Zurück" id="zurueck" data-theme="a"></div>
+        <div class="ui-block-b"></div>
+    </fieldset></div>
+    </div>
+    <div data-role="page" id="sensorValues">
+        <div data-role="ui-content" id="contentSensor" class="canvasSensor" data-position="fixed" data-tap-toggle="false">
+            <!-- width und hight beschränken die Grafik auf den angegebenen Raum, wenn nicht angegeben wird der maximale Raum eingenommen
+                 Das viewbox Attribut schafft ein Fenster zur Grafik innerhalb der HTML-Seite und verkleinert, vergrössert, verzerrt, positionniert
+                 und beschneidet das SVG-Objekt.
+            -->
+            <canvas id="canvasSensor" >
+            </canvas>
+        </div>
+    </div>
+</body>
+</html>
