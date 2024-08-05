@@ -1006,6 +1006,7 @@ $(document).ready(function() {
     $("body").on("click", ".steuerung_btn_schalten", function(event) {
         event.stopImmediatePropagation();
         if($(this).attr('menu')) {
+            let status, id;
             let str = ".prowo_btn_aus." + $(this).attr('menu');
             if($(this).attr('status') === "true") {
                 $(this).attr('status' , false);
@@ -1017,8 +1018,22 @@ $(document).ready(function() {
             }      
             let data = {};
             data.id = $(this).attr('menu');
+            id = "s_" + data.id;
             data.type = 2;      // Schalter ein/aus an ProWo senden
-            data.status = $(this).attr('status');
+            status = $(this).attr('status');
+            if(status === "true")
+            {   switch(parseInt($(this).attr('prowotype')))
+                {
+                    case 11: // HUE mit Schalter und Slider
+                    case 21: // Somfy mit Schalter und Slider
+                        let val = document.getElementById(id).value;
+                        status = val * 256 + 1;
+                        break;
+                }  
+            }              
+            else
+                status = 0;
+            data.status = status;
             $.ajax({
                 method : "POST",
                 url : "ajax_nav_steuerung.js",
@@ -1032,7 +1047,36 @@ $(document).ready(function() {
             });
         }
     });
-
+    $("body").on("mouseup", ".slider_steuerung", function(event) {
+        event.stopImmediatePropagation();
+        if($(this).attr('id'))
+        {   let data = {};
+            let status, id, value;
+            id= $(this).attr("id");
+            value = document.getElementById(id).value * 256;
+            data.id = id.substring(2);
+            data.type = 2;      // Schalter ein/aus an ProWo senden
+            id = "b_" + data.id;
+            status = document.getElementById(id);
+            status = status.getAttribute('status');
+            if(status === 'true' || status === '1')
+                status = value +1;
+            else
+                status = value;
+            data.status = status;
+            $.ajax({
+                method : "POST",
+                url : "ajax_nav_steuerung.js",
+                dataType: 'html',
+                data : JSON.stringify(data),
+                contentType: 'application/json'
+            }).done(function(data, textStatus) {
+                $("#ausgabe").html(data);
+            }).fail(function(jqXHR, textStatus, errorThrown) {
+                $("#ausgabe").html(errorThrown);
+            });
+        }
+    });
     //  HEIZUNG
     //  Heizung 1. Ansicht Click auf das Übersichtsfeld
     $("body").on("click", ".btn_heizung_1", function(event) {

@@ -16,7 +16,7 @@ exports.queryProWo = function(param) {
     return new Promise (function(resolve, reject) {
         var ret = '';
         var client = net.Socket();
-        client.connect(3001, '192.168.1.215', function() {
+        client.connect(3001, '192.168.1.222', function() {
             client.write(param);
         });
         client.on('data', function(data) {

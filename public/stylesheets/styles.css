@@ -42,7 +42,8 @@ body{
     padding-left: 20px;
  }
 
-.prowo_btn,     /* nur für die Anzeige                                  */
+.prowo_btn,     /* nur für die Anzeige                                 */
+.prowo_btn_mitSchieber,
 .btn_steuerung_2,    /* nur für Ebene 2 z.B Wohnzimmer                       */
 .btn_heizung_2,
 .btn_alarm_1,
@@ -55,9 +56,22 @@ body{
     box-sizing: border-box;
     border:1px solid #aaa; 
     margin: 5px 3px 3px 3px;   
-    height: 60px;
     padding:10px;
 }
+.prowo_btn,     /* nur für die Anzeige                                  */
+.btn_steuerung_2,    /* nur für Ebene 2 z.B Wohnzimmer                       */
+.btn_heizung_2,
+.btn_alarm_1,
+.btn_alarm_3,
+.btn_alarm_history,
+.btn_alarmclock
+{
+    height: 60px;
+}
+.prowo_btn_mitSchieber
+{
+    height: 80px;
+}    
 .btn_sensor
 {
     background: white;
@@ -348,3 +362,12 @@ body{
 {
     background:grey
 }
+.slider_steuerung
+{
+    background: linear-gradient(to right, rgb(50, 50, 50), rgb(255, 255, 255)); 
+}
+.slider_sensor {
+    background: linear-gradient(to right, #005fc2, #35A834 40%, #ffd400 65%, #FF6400); 
+}
+
+
