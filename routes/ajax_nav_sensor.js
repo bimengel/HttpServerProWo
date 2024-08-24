@@ -28,7 +28,8 @@ router.use(function(request, response, next) {
                     if(jsonProWo.sensor[i].typ == 2) // TH1
                     {
                         response.write('<div class="sensor_humidity">' + jsonProWo.sensor[i].humidity + '%</div></div>');
-                        response.write('<input class="slider_sensor" type="range" min="1" max="500" value="' + jsonProWo.sensor[i].VocSignal + '" />');
+                        response.write('<input class="slider_sensor" type="range" min="1" max="500" value="' 
+                            + jsonProWo.sensor[i].VocSignal + '" disabled="true"/>');
                     }
                     else
                         response.write('</div>');   

@@ -57,9 +57,9 @@ router.use(function(request, response, next) {
                     response.write('<div class="btn_heizung_2" menu="' + jsonProWo.list[i].id + '"');
                     response.write(' type="button" prowotype="' + jsonProWo.list[i].type + '">');
                     if(jsonProWo.list[i].image === undefined)
-                        response.write('<div class="prowo_btn_img_pos"></div>');
+                        response.write('<div class="prowo_btn_img"></div>');
                     else
-                        response.write('<div class="prowo_btn_img_pos"><img src="' + jsonProWo.list[i].image + '" /></div>');
+                        response.write('<div class="prowo_btn_img"><img src="' + jsonProWo.list[i].image + '" /></div>');
                     response.write('<div class="prowo_btn_text">' + jsonProWo.list[i].text + '</div>');
                     if(jsonProWo.list[i].status !== "not") {
                         response.write('<div class="prowo_btn_schalten">')

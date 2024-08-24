@@ -44,6 +44,7 @@ body{
 
 .prowo_btn,     /* nur für die Anzeige                                 */
 .prowo_btn_mitSchieber,
+.prowo_btn_uds,
 .btn_steuerung_2,    /* nur für Ebene 2 z.B Wohnzimmer                       */
 .btn_heizung_2,
 .btn_alarm_1,
@@ -56,7 +57,7 @@ body{
     box-sizing: border-box;
     border:1px solid #aaa; 
     margin: 5px 3px 3px 3px;   
-    padding:10px;
+    padding:8px;
 }
 .prowo_btn,     /* nur für die Anzeige                                  */
 .btn_steuerung_2,    /* nur für Ebene 2 z.B Wohnzimmer                       */
@@ -64,13 +65,14 @@ body{
 .btn_alarm_1,
 .btn_alarm_3,
 .btn_alarm_history,
-.btn_alarmclock
+.btn_alarmclock,
+.prowo_btn_uds
 {
-    height: 60px;
+    height: 52px;
 }
 .prowo_btn_mitSchieber
 {
-    height: 80px;
+    height: 85px;
 }    
 .btn_sensor
 {
@@ -238,9 +240,11 @@ body{
     font-size: 12px;
     padding: 0px 0px 20px 0px;
 }
-.prowo_btn_img_pos {
-    height: 30px;
+.prowo_btn_img,
+.prowo_btn_img_placeholder{
+    height: 35px;
     width: 30px; 
+    border: none;
     float: left;
 }
 .prowo_btn_text,
@@ -321,8 +325,10 @@ body{
     float: right;
 }
 
+.prowo_btn_up,
+.prowo_btn_down,
+.prowo_btn_stop,
 .prowo_btn_schalten {
-    overflow: hidden;
     position : relative;
     right : 10px;
     height: 30px;
@@ -330,22 +336,42 @@ body{
     float: right;
 }
 
+.prowo_btn_schalten {
+    overflow: hidden;
+}
+.prowo_btn_up {
+    position: absolute;
+    right:105px;
+}
+.prowo_btn_down {
+    position: absolute;    
+    right:15px;
+}
+.prowo_btn_stop {
+    position: absolute;    
+    right:60px;
+}
+
 .prowo_btn_rahmen {
     position: absolute;
     top: 0px;
     left: 0px;  
 }
-.prowo_btn_ein {
+.prowo_btn_ein
+{
     position: absolute;
     top: 0px;
     left: 0px;
 }
-.prowo_btn_aus {
+.prowo_btn_aus
+{
     position: relative;
     top: 0px;
     left: 0px;
 }
-
+.grayscale {
+    filter:grayscale(100%);
+}
 .backgrounderror{
    background:#ff000085;
 
@@ -362,12 +388,7 @@ body{
 {
     background:grey
 }
-.slider_steuerung
-{
-    background: linear-gradient(to right, rgb(50, 50, 50), rgb(255, 255, 255)); 
-}
-.slider_sensor {
-    background: linear-gradient(to right, #005fc2, #35A834 40%, #ffd400 65%, #FF6400); 
-}
 
-
+.pos_slider {
+    height: 45px;
+}

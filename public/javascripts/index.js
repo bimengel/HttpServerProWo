@@ -28,7 +28,9 @@ $(document).ready(function() {
             }
         }
     });
-    // Home
+//
+// Home
+//
     $("body").on("click", ".home", function() { 
         let menu  = $(".home").attr('menu');
         let data = {};
@@ -45,7 +47,9 @@ $(document).ready(function() {
             $("#ausgabe").html(errorThrown);
         });        
     });
-    // Navigation
+//
+// Navigation
+//
     // 'Grafikmenü' - Steuerung ist angewählt worden 
     $("body").on("click", ".nav_steuerung", function() {
         let data = {};
@@ -60,6 +64,7 @@ $(document).ready(function() {
         }).done(function(data, textStatus) {
             $("#content").replaceWith(data); 
             $(".prowo_btn_schalten").setStatus();
+            $(".prowo_btn_img").setImage();            
         }).fail(function(jqXHR, textStatus, errorThrown) {
             $("#ausgabe").html(errorThrown);
         });
@@ -155,8 +160,9 @@ $(document).ready(function() {
             });
         }
     });
-    
-    //  AlarmClock - Wecker
+//
+//  AlarmClock - Wecker
+//
     function AlarmClock() {
         $.ajax({
             method : "POST",
@@ -356,9 +362,9 @@ $(document).ready(function() {
         dataGlobal.id = "7_7_0_0";
         AlarmClock();
     }); 
-    //    
-    // Sensor
-    //
+//    
+// Sensor
+//
     $("body").on("click", ".btn_sensor", function(event) {
         let data = {};
         data.id = $(this).attr('menu');
@@ -523,8 +529,9 @@ $(document).ready(function() {
         }
         ctx.stroke();
     }
- 
-    // Alarm
+// 
+// Alarm
+//
     function ListeAlarme(data) {
         
         $.ajax({
@@ -663,7 +670,9 @@ $(document).ready(function() {
         if(i >= 0)
             $('#historyAnzTage').val(i);
     });
-    // Wetterstation
+//
+// Wetterstation
+//
     $('body').on('click', '.prowo_home_ws', function() {
         dataGlobal.id = "5_1_1_1";
         $.mobile.navigate("#diagrammZaehler");
@@ -671,8 +680,8 @@ $(document).ready(function() {
         $('#zaehler').attr('menu', '5');
         verwaltZaehler(3);        
     });
-    // ZAEHLER
-    // Diagramme
+// ZAEHLER
+// Diagramme
     $("body").on("click", ".btn_zaehler_1", function() {
        
        dataGlobal.id = $(this).attr('menu');
@@ -982,7 +991,9 @@ $(document).ready(function() {
             $("#ausgabe").html(errorThrown);
         });
     });
-    // STEUERUNG
+//
+// STEUERUNG
+//
     // Untermenü wird angewählt (zB Wohnzimmer, Aussen, .....)
     $("body").on("click", ".btn_steuerung_2", function(event) {
         let data = {};
@@ -997,6 +1008,7 @@ $(document).ready(function() {
             }).done(function(data, textStatus) {
                 $("#content").replaceWith(data);   
                 $(".prowo_btn_schalten").setStatus();
+                $(".prowo_btn_img").setImage();                   
             }).fail(function(jqXHR, textStatus, errorThrown) {
                 $("#ausgabe").html(errorThrown);
         });
@@ -1006,34 +1018,25 @@ $(document).ready(function() {
     $("body").on("click", ".steuerung_btn_schalten", function(event) {
         event.stopImmediatePropagation();
         if($(this).attr('menu')) {
-            let status, id;
+            let status, value, id;
             let str = ".prowo_btn_aus." + $(this).attr('menu');
-            if($(this).attr('status') === "true") {
-                $(this).attr('status' , false);
+            value = $(this).attr('status');
+            status = Math.trunc(value % 256);            
+            value = Math.trunc(value / 256);
+            if(status == 1) {
+                status = 0;
                 $(str).animate({ left : "0px" }, 300);
             }
             else {
                 $(str).animate({ left : "15px" }, 300);
-                $(this).attr('status' , true);
-            }      
+                status = 1;
+            }  
+            value = value * 256 + status;
+            $(this).attr('status' , value);              
             let data = {};
             data.id = $(this).attr('menu');
-            id = "s_" + data.id;
             data.type = 2;      // Schalter ein/aus an ProWo senden
-            status = $(this).attr('status');
-            if(status === "true")
-            {   switch(parseInt($(this).attr('prowotype')))
-                {
-                    case 11: // HUE mit Schalter und Slider
-                    case 21: // Somfy mit Schalter und Slider
-                        let val = document.getElementById(id).value;
-                        status = val * 256 + 1;
-                        break;
-                }  
-            }              
-            else
-                status = 0;
-            data.status = status;
+            data.status = value;
             $.ajax({
                 method : "POST",
                 url : "ajax_nav_steuerung.js",
@@ -1047,23 +1050,21 @@ $(document).ready(function() {
             });
         }
     });
-    $("body").on("mouseup", ".slider_steuerung", function(event) {
+    // slider ist bearbeitet worden
+    $("body").on("mouseup touchend", ".slider_steuerung", function(event) {
         event.stopImmediatePropagation();
         if($(this).attr('id'))
         {   let data = {};
-            let status, id, value;
+            let status, id, value, element;
             id= $(this).attr("id");
             value = document.getElementById(id).value * 256;
             data.id = id.substring(2);
             data.type = 2;      // Schalter ein/aus an ProWo senden
             id = "b_" + data.id;
-            status = document.getElementById(id);
-            status = status.getAttribute('status');
-            if(status === 'true' || status === '1')
-                status = value +1;
-            else
-                status = value;
-            data.status = status;
+            element = document.getElementById(id);
+            status = element.getAttribute('status') % 256;
+            data.status = parseInt(status) + value;
+            element.setAttribute('status', data.status);
             $.ajax({
                 method : "POST",
                 url : "ajax_nav_steuerung.js",
@@ -1077,7 +1078,38 @@ $(document).ready(function() {
             });
         }
     });
-    //  HEIZUNG
+    $("body").on("click", ".prowo_btn_up, .prowo_btn_stop, .prowo_btn_down", function(event) {
+        event.stopImmediatePropagation();
+        if($(this).parent().attr('id'))
+        {   let data = {};
+            let status, value, id;
+            id = $(this).parent().attr("id"); 
+            data.id = id.substring(2);
+            data.type = 2;      // Schalter ein/aus an ProWo senden  
+            status = $(this).attr("status"); // status des Buttons 0,1 oder 2
+            value = $(this).parent().attr('status');
+            value = Math.trunc(value / 256);
+            value = value * 256 + parseInt(status);
+            data.status = value;
+            $(this).parent().attr('status', value); 
+            $.ajax({
+                method : "POST",
+                url : "ajax_nav_steuerung.js",
+                dataType: 'html',
+                data : JSON.stringify(data),
+                contentType: 'application/json'
+            }).done(function(data, textStatus) {
+                $("#ausgabe").html(data);
+                $(".prowo_btn_img").setImage();
+            }).fail(function(jqXHR, textStatus, errorThrown) {
+                $("#ausgabe").html(errorThrown);
+            });                     
+        }       
+    });
+
+//
+//  HEIZUNG
+//
     //  Heizung 1. Ansicht Click auf das Übersichtsfeld
     $("body").on("click", ".btn_heizung_1", function(event) {
         let data = {};
@@ -1315,9 +1347,27 @@ $(document).ready(function() {
     $.fn.setStatus = function() {
         return this.each(function() {
             let str = ".prowo_btn_aus." + $(this).attr('menu');
-            if($(this).attr('status') === "true") {
+            if(Math.trunc($(this).attr('status') % 256) != 0) {
                 $(str).animate({ left : "15px" }, 300);
             }
+        });
+    }
+    $.fn.setImage = function() {
+        return this.each(function() {
+            let str, id, status, pos;
+            str = $(this).attr('src');
+            if(str)
+            {
+                id = $(this).attr('id').substring(2);
+                id = "#b_" + id;
+                status = $(this).siblings(id).attr('status') % 256;
+                pos = str.lastIndexOf(".");
+                if(pos > 1)
+                {
+                    str = str.substring(0, pos-1) + status + str.substring(pos);
+                    $(this).attr('src', str);
+                }
+            }   
         });
     }
 
