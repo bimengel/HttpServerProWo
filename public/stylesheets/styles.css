@@ -42,10 +42,9 @@ body{
     padding-left: 20px;
  }
 
-.prowo_btn,     /* nur für die Anzeige                                 */
 .prowo_btn_mitSchieber,
 .prowo_btn_uds,
-.btn_steuerung_2,    /* nur für Ebene 2 z.B Wohnzimmer                       */
+.btn_steuerung,   
 .btn_heizung_2,
 .btn_alarm_1,
 .btn_alarm_3,
@@ -59,8 +58,7 @@ body{
     margin: 5px 3px 3px 3px;   
     padding:8px;
 }
-.prowo_btn,     /* nur für die Anzeige                                  */
-.btn_steuerung_2,    /* nur für Ebene 2 z.B Wohnzimmer                       */
+.btn_steuerung,    
 .btn_heizung_2,
 .btn_alarm_1,
 .btn_alarm_3,

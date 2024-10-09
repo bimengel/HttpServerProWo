@@ -995,7 +995,7 @@ $(document).ready(function() {
 // STEUERUNG
 //
     // Untermenü wird angewählt (zB Wohnzimmer, Aussen, .....)
-    $("body").on("click", ".btn_steuerung_2", function(event) {
+    $("body").on("click", ".btn_steuerung, .prowo_btn_mitSchieber, .prowo_btn_uds", function(event) {
         let data = {};
         data.id = $(this).attr('menu');
         data.type = 1;
