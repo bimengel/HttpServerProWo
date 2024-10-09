@@ -1006,9 +1006,11 @@ $(document).ready(function() {
                 data : JSON.stringify(data),
                 contentType: 'application/json'
             }).done(function(data, textStatus) {
-                $("#content").replaceWith(data);   
-                $(".prowo_btn_schalten").setStatus();
-                $(".prowo_btn_img").setImage();                   
+                if(data != '')
+                {   $("#content").replaceWith(data);   
+                    $(".prowo_btn_schalten").setStatus();
+                    $(".prowo_btn_img").setImage();
+                }                  
             }).fail(function(jqXHR, textStatus, errorThrown) {
                 $("#ausgabe").html(errorThrown);
         });
