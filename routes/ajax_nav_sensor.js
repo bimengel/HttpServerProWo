@@ -24,15 +24,19 @@ router.use(function(request, response, next) {
                 {
                     response.write('<div class="btn_sensor" menu="' + jsonProWo.sensor[i].id + '" type="button">');
                     response.write('<div><div class="sensor_text">' + jsonProWo.sensor[i].text + '</div>');
-                    response.write('<div class="sensor_temp">' + jsonProWo.sensor[i].temp + '°C</div>');
-                    if(jsonProWo.sensor[i].typ == 2) // TH1
-                    {
+                    switch(parseInt(jsonProWo.sensor[i].typ)) {
+                    case 1 : // TQS3
+                        response.write('<div class="sensor_temp">' + jsonProWo.sensor[i].temp + '°C</div></div>');
+                        break;
+                    case 2 : // TH1
                         response.write('<div class="sensor_humidity">' + jsonProWo.sensor[i].humidity + '%</div></div>');
                         response.write('<input class="slider_sensor" type="range" min="1" max="500" value="' 
                             + jsonProWo.sensor[i].VocSignal + '" disabled="true"/>');
+                        break;
+                    case 3: // Ultrtaschallmessung Wassertank Amelscheid
+                        response.write('<div class="sensor_temp">' + jsonProWo.sensor[i].humidity + '%</div></div>');
+                        break;                        
                     }
-                    else
-                        response.write('</div>');   
                     response.write('</div>');                   
                 }
                 response.end('</div>');                
